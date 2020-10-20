@@ -1,4 +1,4 @@
-# calculator-site
+# CaluclatorSite
 Calcualtor. More **bugs**
 
 Check in browser 
