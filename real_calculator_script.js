@@ -5,378 +5,374 @@ var a_or_b = "a";
 var empty = true;
 var doble_click = false;
 
+// @NOTE Чтобы не обращаться к DOM дереву каждый раз, можно просто запомнить
+// в переменной ссылку на DOM элемент единожды, и везде использовать только его. Короче и быстрее.
+var num;
 
-function form_number_0(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "0";
-        }
-        else{
-            b += "0";
-        }
-        if(document.getElementById('num').innerHTML != "0"){
-            document.getElementById('num').innerHTML += 0;
-        }
-        else{
-            document.getElementById('num').innerHTML = 0;
-        }
-    }
-    else{
-        a = "0";
-        a_or_b = "a";
-        b = "";
-        document.getElementById('num').innerHTML = 0;
-        empty = true;
-    }
+// @NOTE это означает, что анонимная функция (начинается с function() {}) выполнится тогда,
+// когда прогрузится весь DOM контент страницы.
+// Для чего это надо? Когда мы хотим единожды связать глобальной переменной num ноду из DOM дерева,
+// то надо дождаться отрисовки всех html элементов.
+// Первые строки кода выполняться начинают раньше, чем появится на экране первые html элементы.
+// Поэтому выше мы объявляем лишь переменную num, а значение ей присвоим тогда, когда отработает событие DOMContentLoaded.
+document.addEventListener("DOMContentLoaded", function () {
+  num = document.getElementById("num");
+});
+
+// @NOTE Над NUM происходит разного рода операции, но она все группируются по нескольким основным.
+// appendNum означает - добавить в конец новый символ.
+// Вообще результат document.getElementById('num').innerHTML += 0; может быть непредсказуем,
+// так как происходит конкатенация числа к строке. Поэтому лучше всего явно представить 0 как "0"
+// это будет лучше намного.
+function appendNum(value) {
+  num.innerHTML += "" + value; // ""+value делается для приведения value к строке явно.
 }
 
-function form_number_1(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "1";
-        }
-        else{
-            b += "1";
-        }
-        document.getElementById('num').innerHTML += 1;
-    }
-    else{
-        a = "1";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 1;
-        empty = false;
-    }
+function setNum(value) {
+  num.innerHTML = "" + value;
 }
 
-function form_number_2(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "2";
-        }
-        else{
-            b += "2";
-        }
-        document.getElementById('num').innerHTML += 2;
+function form_number_0() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "0";
+    } else {
+      b += "0";
     }
-    else{
-        a = "2";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 2;
-        empty = false;
+    if (num.innerHTML != "0") {
+      appendNum(0);
+    } else {
+      setNum(0);
     }
-}
-
-function form_number_3(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "3";
-        }
-        else{
-            b += "3";
-        }
-        document.getElementById('num').innerHTML += 3;
-    }
-    else{
-        a = "3";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 3;
-        empty = false;
-    }
-}
-
-function form_number_4(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "4";
-        }
-        else{
-            b += "4";
-        }
-        document.getElementById('num').innerHTML += 4;
-    }
-    else{
-        a = "4";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 4;
-        empty = false;
-    }
-}
-
-function form_number_5(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "5";
-        }
-        else{
-            b += "5";
-        }
-        document.getElementById('num').innerHTML += 5;
-    }
-    else{
-        a = "5";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 5;
-        empty = false;
-    }
-}
-
-function form_number_6(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "6";
-        }
-        else{
-            b += "6";
-        }
-        document.getElementById('num').innerHTML += 6;
-    }
-    else{
-        a = "6";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 6;
-        empty = false;
-    }
-}
-
-function form_number_7(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "7";
-        }
-        else{
-            b += "7";
-        }
-        document.getElementById('num').innerHTML += 7;
-    }
-    else{
-        a = "7";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 7;
-        empty = false;
-    }
-}
-
-function form_number_8(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "8";
-        }
-        else{
-            b += "8";
-        }
-        document.getElementById('num').innerHTML += 8;
-    }
-    else{
-        a = "8";
-        b = "";
-        a_or_b = "a";
-        document.getElementById('num').innerHTML = 8;
-        empty = false;
-    }
-}
-
-function form_number_9(){
-    if(empty != true){
-        if(a_or_b == "a"){
-            a += "9";
-        }
-        else{
-            b += "9";
-        }
-        document.getElementById('num').innerHTML += 9;
-    }
-    else{
-        if(a_or_b == "a"){
-            a = "9";
-            b = "";
-            a_or_b = "a";
-        }
-        else{
-            b = "9";
-            a_or_b = "b";
-        }
-        document.getElementById('num').innerHTML = 9;
-        empty = false;
-    }
-}
-
-function add(){
-        if(doble_click){
-            b = "";
-            a_or_b = "b";
-            op = "+";
-            empty = false;
-            document.getElementById('num').innerHTML = "";
-        }
-        else{
-            document.getElementById('num').innerHTML = "";
-            op = "+";
-            a_or_b = "b";
-        }
-}
-
-function minus(){
-    if(doble_click){
-        b = "";
-	    a_or_b = "b";
-	    op = "-";
-	    empty = false;
-	    document.getElementById('num').innerHTML = "";
-    }
-    else{
-	    document.getElementById('num').innerHTML = "";
-        op = "-";
-    	a_or_b = "b";
-    }
-}
-
-function umng(){
-    if(doble_click){
-        b = "";
-	    a_or_b = "b";
-	    op = "*";
-	    empty = false;
-	    document.getElementById('num').innerHTML = "";
-    }
-    else{
-	    document.getElementById('num').innerHTML = "";
-        op = "*";
-    	a_or_b = "b";
-    }
-}
-
-function devide(){
-    if(doble_click){
-        b = "";
-	    a_or_b = "b";
-	    op = "/";
-	    empty = false;
-	    document.getElementById('num').innerHTML = "";
-    }
-    else{
-	    document.getElementById('num').innerHTML = "";
-        op = "/";
-    	a_or_b = "b";
-    }
-}
-
-function add_minus(){
-    if(a_or_b == "a"){
-	    a = -Number(a);
-    }
-    else{
-	    b = -Number(b);
-    }
-    document.getElementById('num').innerHTML = -Number(document.getElementById('num').innerHTML);
-}
-
-function add_virgule(){
-    if(a_or_b == "a"){
-        a += ".";
-    }
-    else{
-        b += "."
-    }
-    document.getElementById('num').innerHTML += ".";
-	empty = false;
-}
-
-function dlsx(){
-    if(a_or_b == "a"){
-	    a = Math.trunc(Number(a) / 10);
-    }
-    else{
-	    b = Math.trunc(Number(b) / 10);
-    }
-    document.getElementById('num').innerHTML = Math.trunc(Number(document.getElementById('num').innerHTML) / 10);
-}
-
-function procent_of_x(){
-    if(op == "+" || op == "-"){
-        b = Number(a) * (Number(b) / 100);
-    }
-    else{
-	    b = Number(b) / 100;
-    }
-    document.getElementById('num').innerHTML = b;
-}
-
-function clear_all(){
-    a = "";
-    b = "";
-    op = "";
+  } else {
+    a = "0";
     a_or_b = "a";
-    doble_click = false;
+    b = "";
+    setNum(0);
     empty = true;
-    document.getElementById('num').innerHTML = "0";
+  }
 }
 
-function CE(){
+function form_number_1() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "1";
+    } else {
+      b += "1";
+    }
+    appendNum(1);
+  } else {
+    a = "1";
+    b = "";
+    a_or_b = "a";
+    setNum(1);
+    empty = false;
+  }
+}
+
+function form_number_2() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "2";
+    } else {
+      b += "2";
+    }
+    appendNum(2);
+  } else {
+    a = "2";
+    b = "";
+    a_or_b = "a";
+    setNum(2);
+    empty = false;
+  }
+}
+
+function form_number_3() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "3";
+    } else {
+      b += "3";
+    }
+    appendNum(3);
+  } else {
+    a = "3";
+    b = "";
+    a_or_b = "a";
+    setNum(3);
+    empty = false;
+  }
+}
+
+function form_number_4() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "4";
+    } else {
+      b += "4";
+    }
+    appendNum(4);
+  } else {
+    a = "4";
+    b = "";
+    a_or_b = "a";
+    setNum(4);
+    empty = false;
+  }
+}
+
+function form_number_5() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "5";
+    } else {
+      b += "5";
+    }
+    appendNum(5);
+  } else {
+    a = "5";
+    b = "";
+    a_or_b = "a";
+    setNum(5);
+    empty = false;
+  }
+}
+
+function form_number_6() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "6";
+    } else {
+      b += "6";
+    }
+    appendNum(6);
+  } else {
+    a = "6";
+    b = "";
+    a_or_b = "a";
+    setNum(6);
+    empty = false;
+  }
+}
+
+function form_number_7() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "7";
+    } else {
+      b += "7";
+    }
+    appendNum(7);
+  } else {
+    a = "7";
+    b = "";
+    a_or_b = "a";
+    setNum(7);
+    empty = false;
+  }
+}
+
+function form_number_8() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "8";
+    } else {
+      b += "8";
+    }
+    appendNum(8);
+  } else {
+    a = "8";
+    b = "";
+    a_or_b = "a";
+    setNum(8);
+    empty = false;
+  }
+}
+
+function form_number_9() {
+  if (empty != true) {
+    if (a_or_b == "a") {
+      a += "9";
+    } else {
+      b += "9";
+    }
+    appendNum(9);
+  } else {
+    if (a_or_b == "a") {
+      a = "9";
+      b = "";
+      a_or_b = "a";
+    } else {
+      b = "9";
+      a_or_b = "b";
+    }
+    setNum(9);
+    empty = false;
+  }
+}
+
+function add() {
+  setNum(""); // Если действие выполняется при любом из условий, достаточно его выполнить раз до входа в условие.
+  if (doble_click) {
     b = "";
     a_or_b = "b";
-    document.getElementById('num').innerHTML = "";
+    op = "+";
+    empty = false;
+    // document.getElementById("num").innerHTML = ""; // нужно выполнить один раз выше
+  } else {
+    // document.getElementById("num").innerHTML = ""; // нужно выполнить один раз выше
+    op = "+";
+    a_or_b = "b";
+  }
 }
 
-function sqrt(){
-    document.getElementById('num').innerHTML = Math.sqrt(Number(document.getElementById('num').innerHTML));
-    if(a_or_b == "a"){
-        a = document.getElementById('num').innerHTML;
-    }
-    else{
-        b = document.getElementById('num').innerHTML;
-    }
+function minus() {
+  appendNum("-"); // @УЛУЧШЕНИЕ. Но я бы сделал добавление знака, чтобы не терять глазами, то что я только что нажал.
+  // можно сделать так для всех действий над числами. Это на твой выбор.
+
+  if (doble_click) {
+    b = "";
+    a_or_b = "b";
+    op = "-";
+    empty = false;
+    // document.getElementById("num").innerHTML = "";
+  } else {
+    // document.getElementById("num").innerHTML = "";
+    op = "-";
+    a_or_b = "b";
+  }
 }
 
-function square(){
-    document.getElementById('num').innerHTML = Number(document.getElementById('num').innerHTML) * Number(document.getElementById('num').innerHTML);
-    if(a_or_b == "a"){
-        a = document.getElementById('num').innerHTML;
-    }
-    else{
-        b = document.getElementById('num').innerHTML;
-    }
+function umng() {
+  setNum("");
+  if (doble_click) {
+    b = "";
+    a_or_b = "b";
+    op = "*";
+    empty = false;
+    // document.getElementById("num").innerHTML = "";
+  } else {
+    // document.getElementById("num").innerHTML = "";
+    op = "*";
+    a_or_b = "b";
+  }
 }
 
-function one_devide_x(){
-    document.getElementById('num').innerHTML = 1 / Number(document.getElementById('num').innerHTML);
-    if(a_or_b == "a"){
-        a = document.getElementById('num').innerHTML;
-    }
-    else{
-        b = document.getElementById('num').innerHTML;
-    }
+function devide() {
+  setNum("");
+  if (doble_click) {
+    b = "";
+    a_or_b = "b";
+    op = "/";
+    empty = false;
+    // document.getElementById("num").innerHTML = "";
+  } else {
+    // document.getElementById("num").innerHTML = "";
+    op = "/";
+    a_or_b = "b";
+  }
 }
 
-function result(){
-    if(op == "+"){
-        document.getElementById('num').innerHTML = Number(a) + Number(b);
-	    a = document.getElementById('num').innerHTML;
-	    empty = true;
-	    doble_click = true;
-    }
-    else if(op == "-"){
-        document.getElementById('num').innerHTML = Number(a) - Number(b);
-	    a = document.getElementById('num').innerHTML;
-	    empty = true;
-	    doble_click = true;
-    }
-    else if(op == "*"){
-        document.getElementById('num').innerHTML = Number(a) * Number(b);
-	    a = document.getElementById('num').innerHTML;
-	     empty = true;
-	     doble_click = true;
-    }
-    else if(op == "/"){
-        document.getElementById('num').innerHTML = Number(a) / Number(b)
-	    a = document.getElementById('num').innerHTML;
-	    empty = true;
-	    doble_click = true;
-    }
+function add_minus() {
+  if (a_or_b == "a") {
+    a = -Number(a);
+  } else {
+    b = -Number(b);
+  }
+  num.innerHTML = -Number(num.innerHTML);
+}
+
+function add_virgule() {
+  if (a_or_b == "a") {
+    a += ".";
+  } else {
+    b += ".";
+  }
+  appendNum(".");
+  empty = false;
+}
+
+function dlsx() {
+  if (a_or_b == "a") {
+    a = Math.trunc(Number(a) / 10);
+  } else {
+    b = Math.trunc(Number(b) / 10);
+  }
+  num.innerHTML = Math.trunc(Number(num.innerHTML) / 10);
+}
+
+function procent_of_x() {
+  if (op == "+" || op == "-") {
+    b = Number(a) * (Number(b) / 100);
+  } else {
+    b = Number(b) / 100;
+  }
+  setNum(b);
+}
+
+function clear_all() {
+  a = "";
+  b = "";
+  op = "";
+  a_or_b = "a";
+  doble_click = false;
+  empty = true;
+  setNum("0");
+}
+
+function CE() {
+  b = "";
+  a_or_b = "b";
+  setNum("");
+}
+
+function sqrt() {
+  num.innerHTML = Math.sqrt(Number(num.innerHTML));
+  if (a_or_b == "a") {
+    a = num.innerHTML;
+  } else {
+    b = num.innerHTML;
+  }
+}
+
+function square() {
+  num.innerHTML = Number(num.innerHTML) * Number(num.innerHTML);
+  if (a_or_b == "a") {
+    a = num.innerHTML;
+  } else {
+    b = num.innerHTML;
+  }
+}
+
+function one_devide_x() {
+  num.innerHTML = 1 / Number(num.innerHTML);
+  if (a_or_b == "a") {
+    a = num.innerHTML;
+  } else {
+    b = num.innerHTML;
+  }
+}
+
+function result() {
+  if (op == "+") {
+    setNum(Number(a) + Number(b));
+    a = num.innerHTML;
+    empty = true;
+    doble_click = true;
+  } else if (op == "-") {
+    setNum(Number(a) - Number(b));
+    a = num.innerHTML;
+    empty = true;
+    doble_click = true;
+  } else if (op == "*") {
+    setNum(Number(a) * Number(b));
+    a = num.innerHTML;
+    empty = true;
+    doble_click = true;
+  } else if (op == "/") {
+    setNum(Number(a) / Number(b));
+    a = num.innerHTML;
+    empty = true;
+    doble_click = true;
+  }
 }
