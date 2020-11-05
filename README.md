@@ -1,4 +1,4 @@
 # CaluclatorSite
-Calcualtor. It has a **bugs**
+Calcualtor. It has ***bugs***
 
 [Check in browser ](https://calculatorbyyourun.netlify.app) 
