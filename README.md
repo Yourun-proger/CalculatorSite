@@ -3,6 +3,6 @@
 ![Version](https://img.shields.io/badge/Version-2.0-blue)
 
 # CaluclatorSite
-Calcualtor. It has ***bugs***
+Calcualtor. There are minor ***computational problems*** due to too many operations in a row.
 
 [Check in browser ](https://calculatorbyyourun.netlify.app) 
