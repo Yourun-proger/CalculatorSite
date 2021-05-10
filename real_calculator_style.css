@@ -37,7 +37,6 @@ body{
 }
 
 .calcul_button:hover{ /* Работает при наведении */
-    border-radius: 16px;
     background-color: green;
     color: lime;
 }
